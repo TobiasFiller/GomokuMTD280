@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Gomoku</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="lib/vue.global.prod.js"></script>
+</head>
+
+<body>
+    <main>
+        <!-- <h1>Gomoku Board</h1> -->
+        <img src="res/title.png" alt="Title" width="500px">
+
+        <div id="app">
+
+            <div id="gameState" v-if="gameOver">
+                <p v-if="stoneColor === 1">Black has won!!!</p>
+                <p v-else >White has won!!!</p>
+            </div>
+
+            <div id="player">
+                <p>next stone:</p>
+                <div v-if="fancy">
+                    <img v-if="stoneColor === 1" src="res/stoneWhite128x.png" alt="a white stone">
+                    <img v-else src="res/stoneBlack128x.png" alt="a black stone">
+                </div>
+                <div v-else>
+                    <p v-if="stoneColor ===1">white</p>
+                    <p v-else>black</p>
+                </div>
+            </div>
+
+            <div id="advert">
+                <img src="" alt="Hier könnte Ihre Werbung stehen!">
+            </div>
+
+            <div id="canvas">
+            <canvas width="600" height="600" ref="canvas" @click="clickHandler"></canvas>
+            </div>
+
+            <div id="controls">
+                <div>
+                    <p>Fancy Mode: </p>
+                    <input type="checkbox" @change="drawBoard" v-model="fancy">
+                </div>
+                <div>
+                    <input type="button" value="Restart" @click="restartGame">
+                </div>
+                <div>
+                    <input type="button" value="Save" @click="saveData">
+                </div>
+                <div>
+                    <input type="button" value="Load" @click="loadData">
+                </div>
+                <div>
+                    <input type="button" value="Clear Save" @click="clearData">
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <p>v0.3</p>
+
+        <h2>Official rules:</h2>
+
+        <p>Players alternate turns placing a stone of their color on an empty intersection.
+        Black plays first. The winner is the first player to
+        form an unbroken chain of five stones horizontally, vertically, or diagonally.
+        Placing so that a line of more than five stones of the same color is created does not result in a win.
+        These are called overlines.
+
+        <hr>
+        <p style="font-size:small">
+            Made by Tobias Filler | MTD280 Online Multimedia (<a href="http://www.fh-ooe.at/mtd">MTD</a>)<br>
+        </p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

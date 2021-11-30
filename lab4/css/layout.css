@@ -1,0 +1,26 @@
+#app {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 10fr 10fr;
+    grid-template-areas: ". gameState ." "advert canvas player" "advert canvas controls";
+}
+
+#gameState {
+    grid-area: gameState;
+}
+
+#player {
+    grid-area: player;
+}
+
+#advert {
+    grid-area: advert;
+}
+
+#canvas {
+    grid-area: canvas;
+}
+
+#controls{
+    grid-area: controls;
+}
